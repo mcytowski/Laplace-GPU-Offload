@@ -12,7 +12,8 @@ The Laplace equation is often written as
 
 ![Laplace equation](img/laplace_eq1.png)
 
-or 
+or $$ \frac{kram}{down} \sum_0^\infty $$
+
 
 ### H3
 #### H4
