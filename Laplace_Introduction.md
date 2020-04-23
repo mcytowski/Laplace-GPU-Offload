@@ -17,18 +17,16 @@ The 2D Laplace equation is often written as:
 <p><img src="img/laplace_eq1.png" alt="Laplace equation" width="120"/></p>
 
 The above equation can be discretised with the Finite Difference Method on a 2D grid. We will assume that each grid cell has side h. The discretisation will lead us to the following formula:
-$$
-\frac{(u _{i,j-1}+u _{i,j+1}+u _{i-1,j}+u _{i+1,j}-4u _{i,j})}{h^2}=0
-$$
+
+<p><img src="img/laplace_eq2.png" alt="Laplace equation discretisation" width="120"/></p>
 
 In the above formula $u_{i,j}$ represents the value of $u$ function in grid node with $(i,j)$ coordinates.
 
 Note that the above equation can be simplified to:
-$$
-u _{i,j}=0.25(u _{i,j-1}+u _{i,j+1}+u _{i-1,j}+u _{i+1,j})
-$$
 
-Since the above formula has to hold for every element in the grid, the computational algorithm of solving Laplace equation is an iterative procedure. The value of $u _{i,j}$ in each iteration will be computed from the values of 4 neighbouring grid nodes ($u _{i,j-1},u _{i,j+1},u _{i-1,j},u _{i+1,j}$) computed in previous iteration. This process will be repeated until the solution converges. The example code used in this tutorial is implementing the described iterative process.
+<p><img src="img/laplace_eq3.png" alt="Laplace equation discretisation" width="120"/></p>
+
+Since the above formula has to hold for every element in the grid, the computational algorithm of solving Laplace equation is an iterative procedure. The value of u<sub>i,j</sub> in each iteration will be computed from the values of 4 neighbouring grid nodes ($u _{i,j-1},u _{i,j+1},u _{i-1,j},u _{i+1,j}$) computed in previous iteration. This process will be repeated until the solution converges. The example code used in this tutorial is implementing the described iterative process.
 
 In fact, this computational approach of iterative kernels which update array elements according to some fixed pattern, represents a whole class of algorithms. The so-called [stencil codes](https://en.wikipedia.org/wiki/Stencil_code) are most commonly found in the codes of computer simulations, e.g. for computational fluid dynamics in the context of scientific and engineering applications.
 
