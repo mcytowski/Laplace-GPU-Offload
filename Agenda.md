@@ -12,4 +12,4 @@
 
 ## Afternoon session - Hands-on Exercise (2h):
 
-**2D Laplace equation solver in OpenACC and OpenMP**, 2 hours, Maciej Cytowski (Pawsey), Tom Papatheodore (ORNL), Chris Daley (LBL)
+**2D Laplace equation solver in OpenACC and OpenMP**, 2 hours, Maciej Cytowski (Pawsey)
