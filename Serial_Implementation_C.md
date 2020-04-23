@@ -23,20 +23,19 @@ There are two functions defined in the code:
 * main function ```main(int argc, char *argv[])``` which reads code input parameters, calls the initialisation function and implements the main algorithm.   
 
 ## Initialisation function
-The initialisation function sets the initial condition to 0 in every grid node. Moreover, it sets the boundary conditions of the grid to have the value 0 for the row/column where the first/second index are zero. Along the other two boundaries the temperature will increase linearly from 0 to 128.
+The initialisation function sets the initial condition to 0 in every grid node.
 
 ```c
-// initialize grid and boundary conditions
-void init(){
-
-    int i,j;
-
     for(i = 0; i <= GRIDX+1; i++){
         for (j = 0; j <= GRIDY+1; j++){
             T[i][j] = 0.0;
         }
     }
+```
 
+The initialisation function also sets the boundary conditions of the grid to have the value 0 for the row/column where the first/second index are zero. Along the other two boundaries the temperature will increase linearly from 0 to 128.
+
+```c
     // set left side to 0 and right to a linear increase
     for(i = 0; i <= GRIDX+1; i++) {
         T[i][0] = 0.0;
@@ -48,8 +47,8 @@ void init(){
         T[0][j] = 0.0;
         T[GRIDX+1][j] = (128.0/GRIDY)*j;
     }
-}
 ```
+
 ## Main functions
 
 The most important part of the main function is the implementation of Laplace equation solver. The algorithm iterations are implemented as a ```while``` loop. The ```while``` loop will terminate when one of the following conditions are satisfied:
