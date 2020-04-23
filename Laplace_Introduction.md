@@ -14,19 +14,19 @@ The Laplace equation is commonly used in physics to describe various phenomena, 
 
 The 2D Laplace equation is often written as:
 
-<p><img src="img/laplace_eq1.png" alt="Laplace equation" width="120"/></p>
+<p><img src="img/laplace_eq1.png" alt="Laplace equation" height="20"/></p>
 
 The above equation can be discretised with the Finite Difference Method on a 2D grid. We will assume that each grid cell has side h. The discretisation will lead us to the following formula:
 
-<p><img src="img/laplace_eq2.png" alt="Laplace equation discretisation" width="120"/></p>
+<p><img src="img/laplace_eq2.png" alt="Laplace equation discretisation" height="20"/></p>
 
-In the above formula $u_{i,j}$ represents the value of $u$ function in grid node with $(i,j)$ coordinates.
+In the above formula u<sub>i,j</sub> represents the value of u function in grid node with (i,j) coordinates.
 
 Note that the above equation can be simplified to:
 
-<p><img src="img/laplace_eq3.png" alt="Laplace equation discretisation" width="120"/></p>
+<p><img src="img/laplace_eq3.png" alt="Laplace equation discretisation" height="20"/></p>
 
-Since the above formula has to hold for every element in the grid, the computational algorithm of solving Laplace equation is an iterative procedure. The value of u<sub>i,j</sub> in each iteration will be computed from the values of 4 neighbouring grid nodes ($u _{i,j-1},u _{i,j+1},u _{i-1,j},u _{i+1,j}$) computed in previous iteration. This process will be repeated until the solution converges. The example code used in this tutorial is implementing the described iterative process.
+Since the above formula has to hold for every element in the grid, the computational algorithm of solving Laplace equation is an iterative procedure. The value of u<sub>i,j</sub> in each iteration will be computed from the values of 4 neighbouring grid nodes (u<sub>i-1,j</sub>, u<sub>i+1,j</sub>, u<sub>i,j-1</sub>, u<sub>i,j+1</sub>) computed in previous iteration. This process will be repeated until the solution converges. The example code used in this tutorial is implementing the described iterative process.
 
 In fact, this computational approach of iterative kernels which update array elements according to some fixed pattern, represents a whole class of algorithms. The so-called [stencil codes](https://en.wikipedia.org/wiki/Stencil_code) are most commonly found in the codes of computer simulations, e.g. for computational fluid dynamics in the context of scientific and engineering applications.
 
