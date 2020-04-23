@@ -14,11 +14,11 @@ The Laplace equation is commonly used in physics to describe various phenomena, 
 
 The 2D Laplace equation is often written as:
 
-<p><img src="img/laplace_eq1.png" alt="Laplace equation" height="20"/></p>
+<p><img src="img/laplace_eq1.png" alt="Laplace equation" height="35"/></p>
 
 The above equation can be discretised with the Finite Difference Method on a 2D grid. We will assume that each grid cell has side h. The discretisation will lead us to the following formula:
 
-<p><img src="img/laplace_eq2.png" alt="Laplace equation discretisation" height="20"/></p>
+<p><img src="img/laplace_eq2.png" alt="Laplace equation discretisation" height="35"/></p>
 
 In the above formula u<sub>i,j</sub> represents the value of u function in grid node with (i,j) coordinates.
 
