@@ -14,11 +14,11 @@ The Laplace equation is commonly used in physics to describe various phenomena, 
 
 The 2D Laplace equation is often written as:
 
-<p><img src="img/laplace_eq1.png" alt="Laplace equation" height="35"/></p>
+<p><img src="img/laplace_eq1.png" alt="Laplace equation" height="40"/></p>
 
 The above equation can be discretised with the Finite Difference Method on a 2D grid. We will assume that each grid cell has side h. The discretisation will lead us to the following formula:
 
-<p><img src="img/laplace_eq2.png" alt="Laplace equation discretisation" height="35"/></p>
+<p><img src="img/laplace_eq2.png" alt="Laplace equation discretisation" height="40"/></p>
 
 In the above formula u<sub>i,j</sub> represents the value of u function in grid node with (i,j) coordinates.
 
@@ -44,45 +44,3 @@ Here we will use a similar approach to the one described in the [Software Engine
 1. https://en.wikipedia.org/wiki/Pierre-Simon_Laplace
 2. https://software-engineering.readthedocs.io/en/latest/laplace_equation.html
 3. https://en.wikipedia.org/wiki/Stencil_code
-
-
-
-
-
-
-
-
-
-
-
-
-
-# The Laplace Equation
-## Historical note
-Laplace's equation is a second-order partial equation named after [Pierre-Simon, marquis de Laplace](https://en.wikipedia.org/wiki/Pierre-Simon_Laplace), a French scholar and polymath whose work was a foundation of many scientific fields including engineering, mathematics, physics, statistics and astronomy.  
-
-![Pierre-Simon, marquis de Laplace](https://upload.wikimedia.org/wikipedia/commons/3/39/Laplace%2C_Pierre-Simon%2C_marquis_de.jpg)
-
-## Problem description
-
-The Laplace equation is commonly used in physics to describe various phenomena, including heat transfer.
-
-The Laplace equation is often written as
-
-![Laplace equation](img/laplace_eq1.png)
-
-or $$ \frac{kram}{down} \sum_0^\infty $$
-
-
-### H3
-#### H4
-##### H5
-###### H6
-
-Alternatively, for H1 and H2, an underline-ish style:
-
-Alt-H1
-======
-
-Alt-H2
-------
