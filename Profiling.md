@@ -67,7 +67,7 @@ Each sample counts as 0.01 seconds.
   0.02     64.55     0.01                             main (laplace.c:44 @ 40086c)
   0.00     64.55     0.00        1     0.00     0.00  init (laplace.c:77 @ 400a92)
   ```
-As can be seen, the majority of time (nearly 100%) is spent, as expected, in:
+As can be seen, the majority of time is spent, as expected, in:
 * the main computational kernel
     ```c
     for(i = 1; i <= GRIDX; i++)

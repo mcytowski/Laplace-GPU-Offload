@@ -91,3 +91,15 @@ Next, the largest change in the temperature is computed and ```dt``` is updated.
     iteration++;
 }
 ```
+## Time measurements
+
+The execution time of the algorithm is measured and reported with the use of *gettimeofday* function.
+
+```c
+gettimeofday(&start_time,NULL);
+...    
+gettimeofday(&stop_time,NULL);
+timersub(&stop_time, &start_time, &elapsed_time); // measure time
+
+printf("Total time was %f seconds.\n", elapsed_time.tv_sec+elapsed_time.tv_usec/1000000.0);
+```
