@@ -70,7 +70,7 @@ Within the ```while``` loop the main computational kernel is implemented. The ne
             T_new[i][j] = 0.25 * (T[i+1][j] + T[i-1][j] +
                                         T[i][j+1] + T[i][j-1]);
 ```
-Next, the largest change in the temperature is computed and ```dt``` is updated. ```T_new``` is copied to ```T``` to allow for update in the next iteration. Diagnostic information is periodically printed (every 100 iterations) to progress the convergence of the iterative algorithm.
+Next, the largest change in the temperature is computed and ```dt``` is updated. ```T_new``` is copied to ```T``` to allow for update in the next iteration. Diagnostic information is periodically printed (every 100 iterations) to monitor the convergence of the iterative algorithm.
 
 ```c
     // reset dt
