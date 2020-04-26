@@ -109,8 +109,4 @@ TBD: this is usually not the last step, analysis of block and vector sizes and i
 
 > **KEY COMMENTS**
 > 1. This is usually not the last step of GPU programming with directives. Deep analysis of data transfers will be done in next step. It is also important not to rely on automatic parallelisation techniques but to understand how different parameters (like block and vector sizes) might  impact the final performance.
-> 2. It is really hard to judge which approach (descriptive vs prescriptive) is better. On the one hand we would like the compiler to take care of optimisations as much as possible. On the other hand programmers **must** have a clear understanding on what transformations were made to their code. **We claim that creating a highly optimised GPU code requires a very similar effort in both OpenACC and OpenMP approaches**. 
-
-## References
-
-1. https://www.exascaleproject.org/wp-content/uploads/2017/05/OpenMP-4.5-and-Beyond-SOLLVE-part-21.pdf
+> 2. It is really hard to judge which approach (descriptive vs prescriptive) is better. On the one hand we would like the compiler to take care of optimisations as much as possible. On the other hand programmers **must** have a clear understanding on what transformations were made to their code. **We claim that creating a highly optimised GPU code requires a very similar effort in both OpenACC and OpenMP approaches**.
