@@ -1,5 +1,7 @@
 # Step 1: Profiling
 
+> **GOAL** Use basic profiling techniques to identify the most computationally expensive parts of the code.
+
 In this section we will use the GNU Gprof performance analysis tool to profile our Laplace code.
 
 First, the code needs to be compiled with *-pg* and *-g* options. This will enable the generation of line-by-line profiling information for gprof.
@@ -86,3 +88,7 @@ for(i = 1; i <= GRIDX; i++){
 ```
 
 Those two loop nests are the candidates for directive-based GPU optimisation.
+
+> **KEY TAKEAWAYS**
+> 1. We have analysed the performance of the Laplace code with the use of GNU Gprof profiler.
+> 2. We have identified the most computationally expensive parts of the code - two loop nests executed in each iteration of the solver.
