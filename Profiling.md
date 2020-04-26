@@ -1,8 +1,8 @@
-# Profiling
+# Step 1: Profiling
 
-The GNU Gprof profiler can be used to profile the code.
+In this section we will use the GNU Gprof performance analysis tool to profile our Laplace code.
 
-First, the code need to be compiled with *-pg* and *-g* options. This will enable the generation of line-by-line profiling information for gprof.
+First, the code needs to be compiled with *-pg* and *-g* options. This will enable the generation of line-by-line profiling information for gprof.
 
 ```
 bash-4.2$ make -f makefile.gprof
@@ -10,7 +10,7 @@ gcc -pg -g -c -o laplace.o laplace.c
 gcc -pg -g  -o laplace laplace.o
 ```
 
-Next, the code needs to be executed as usual.
+Next, we will execute the Laplace code as usual.
 
 ```
 bash-4.2$ srun -n 1 -u ./laplace 4000
@@ -38,14 +38,14 @@ Iteration 2100, dt 0.021399
 Iteration 2200, dt 0.020413
 Total time was 64.238252 seconds.
 ```
-The *gmon.out* file containing the profiling information is generated in the working directory.
+After completing the task, the *gmon.out* file containing profiling information will be generated in the working directory.
 
-Now, the *gprof* profiler can be executed.  
+Now, we can use the *gprof* profiler to generate the profiling report.  
 
 ```bash
 bash-4.2$ gprof -lbp laplace gmon.out
 ```
-The set of options used above will generate only line by line profiling information.
+The set of options used above (*-lbp*) will generate only line by line profiling information with no call graph analysis.
 ```
 Flat profile:
 
@@ -67,7 +67,7 @@ Each sample counts as 0.01 seconds.
   0.02     64.55     0.01                             main (laplace.c:44 @ 40086c)
   0.00     64.55     0.00        1     0.00     0.00  init (laplace.c:77 @ 400a92)
   ```
-As can be seen, the majority of time is spent, as expected, in:
+As can be seen, the majority of time is spent, as expected, in two parts of the code:
 * the main computational kernel
     ```c
     for(i = 1; i <= GRIDX; i++)
@@ -85,4 +85,4 @@ for(i = 1; i <= GRIDX; i++){
 }
 ```
 
-Those two are the candidates for directive-based GPU optimisation.
+Those two loop nests are the candidates for directive-based GPU optimisation.
