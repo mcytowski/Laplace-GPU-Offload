@@ -5,8 +5,8 @@ The number of grid nodes in each direction of the 2D grid is defined at the top 
 
 ```c
 // grid size
-#define GRIDY    2000
-#define GRIDX    2000
+#define GRIDY    2048
+#define GRIDX    2048
 ```
 
 The main data structures used in the code are two 2D double precision arrays representing temperature grids from current and previous iterations.

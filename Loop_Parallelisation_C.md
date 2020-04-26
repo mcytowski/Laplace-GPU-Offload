@@ -100,8 +100,6 @@ for(i = 1; i <= GRIDX; i++){
 
 Note, that in both cases we were not required to change the structure of the code to achieve GPU parallelisation. Although the Laplace example used in this tutorial gives us a space to explore various OpenACC and OpenMP directives and options, this is still a very simple program. In general cases, GPU parallelisation might require code restructure, regardless of which of the two programming paradigms is used.
 
-TBD: this is usually not the last step, analysis of block and vector sizes and impact on performance
-
 
 > **KEY TAKEAWAYS**
 > 1. We have explored differences between OpenACC and OpenMP loop constructs for GPU parallelisation.

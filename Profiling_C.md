@@ -1,4 +1,4 @@
-# Step 1: Profiling
+v# Step 1: Profiling
 
 > **GOAL** Use basic profiling techniques to identify the most computationally expensive parts of the code.
 
@@ -16,29 +16,29 @@ Next, we will execute the Laplace code as usual.
 
 ```
 bash-4.2$ srun -n 1 -u ./laplace 4000
-Iteration  100, dt 0.457740
-Iteration  200, dt 0.228780
-Iteration  300, dt 0.152236
-Iteration  400, dt 0.113971
-Iteration  500, dt 0.091044
-Iteration  600, dt 0.075800
-Iteration  700, dt 0.064912
-Iteration  800, dt 0.056725
-Iteration  900, dt 0.050384
-Iteration 1000, dt 0.045296
-Iteration 1100, dt 0.041149
-Iteration 1200, dt 0.037686
-Iteration 1300, dt 0.034756
-Iteration 1400, dt 0.032248
-Iteration 1500, dt 0.030079
-Iteration 1600, dt 0.028180
-Iteration 1700, dt 0.026504
-Iteration 1800, dt 0.025014
-Iteration 1900, dt 0.023681
-Iteration 2000, dt 0.022483
-Iteration 2100, dt 0.021399
-Iteration 2200, dt 0.020413
-Total time was 64.238252 seconds.
+Iteration  100, dt 0.457795
+Iteration  200, dt 0.228820
+Iteration  300, dt 0.152270
+Iteration  400, dt 0.113999
+Iteration  500, dt 0.091070
+Iteration  600, dt 0.075823
+Iteration  700, dt 0.064934
+Iteration  800, dt 0.056746
+Iteration  900, dt 0.050404
+Iteration 1000, dt 0.045315
+Iteration 1100, dt 0.041167
+Iteration 1200, dt 0.037703
+Iteration 1300, dt 0.034773
+Iteration 1400, dt 0.032264
+Iteration 1500, dt 0.030094
+Iteration 1600, dt 0.028195
+Iteration 1700, dt 0.026518
+Iteration 1800, dt 0.025028
+Iteration 1900, dt 0.023695
+Iteration 2000, dt 0.022496
+Iteration 2100, dt 0.021412
+Iteration 2200, dt 0.020426
+Total time was 84.610613 seconds.
 ```
 After completing the task, the *gmon.out* file containing profiling information will be generated in the working directory.
 
