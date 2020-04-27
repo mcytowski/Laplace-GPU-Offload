@@ -1,4 +1,4 @@
-# Step 3: Data transfers
+# Step 3: Data management
 
 > **GOAL** Apply data transfer OpenACC and OpenMP directives to improve the performance of the code.
 
@@ -36,7 +36,7 @@ The impact of memory transfers on the current performance of the GPU kernel can 
 bash-4.2$ srun -u -n 1 nvprof ./laplace_mp 4000
 ```
 
-As can be seen from the report generated below for the OpenMP version of the code, memory transfers represent more than 98% of the compute time (HtoD stands for Host to Device, DtoH stands from Device to Host).
+As can be seen from the report generated below for the OpenMP version of the code, memory transfers represent more than 98% of the runtime (HtoD stands for Host to Device, DtoH stands from Device to Host).
 
 ```
 ==228979== Profiling application: ./laplace_mp 4000
@@ -48,7 +48,57 @@ As can be seen from the report generated below for the OpenMP version of the cod
                     0.18%  217.23ms      2247  96.677us  95.583us  98.144us  __omp_offloading_47c4f666_4f0059e6_main_l45
 ```
 
+## Analysing data transfers
 
+As we've seen memory transfers can take significant amount of time if scheduled improperly. In the case of the Laplace example **T** and **T_new** arrays are being copied multiple times in every iteration of the algorithm. More precisely, in each iteration of the algorithm we have:
+* *T* is being copied in to the device memory (*copyin*) before the first loop nest and copied in and out of the device memory for the second loop nest (*copy*),
+* *T_new* is being copied out of the device memory (*copyout*) after the first loop nest and copied in the device memory before the second loop nest (*copyin*).
+
+This gives us 5 data transfers of a 33.5 MB buffer  per iteration and **11,000** data transfers for the entire run. However if we analyse data accesses in the implementation, we can clearly see that there is no need for this, we don't need any results on the host until after the while loop exits. We will try to fix it by using OpenACC and OpenMP compiler directives to indicate when and which data transfers should occur.
+
+In both cases this is fairly simple. For OpenACC we place *acc data* directive right before the *while* loop:
+```c
+#pragma acc data copy(T), create(T_new)
+while ( dt > MAX_TEMP_ERROR && iteration <= max_iterations ) {
+```
+We can achieve the same for OpenMP with the use of *omp target data* directive placed right before the *while* loop:
+```c
+#pragma omp target data map(tofrom:T) map(alloc:T_new)
+while ( dt > MAX_TEMP_ERROR && iteration <= max_iterations ) {
+```
+
+There is actually a one to one mapping between OpenACC and OpenMP data transfer constructs.
+
+| OpenACC construct | OpenMP construct |
+| ----------------- | ---------------- |
+| copyin(A)         | map(to:A)        |
+| copyout(A)        | map(from:A)      |
+| copy(A)           | map(tofrom:A)    |
+| create(A)         | map(alloc:A)     |
+
+Let's run the *nvprof* profiling again on the OpenMP version.
+```bash
+bash-4.2$ srun -u -n 1 nvprof ./laplace_mp 4000
+```
+```
+==301161== Profiling application: ./laplace_mp 4000
+==301161== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   80.95%  1.00671s      2247  448.03us  434.78us  458.08us  __omp_offloading_47c4f666_6901a48d_main_l56
+                   16.88%  209.86ms      2247  93.396us  92.415us  95.551us  __omp_offloading_47c4f666_6901a48d_main_l45
+                    1.36%  16.877ms      2250  7.5000us  1.2160us  13.957ms  [CUDA memcpy DtoH]
+                    0.81%  10.120ms      2249  4.4990us  1.2790us  7.1050ms  [CUDA memcpy HtoD]
+```
+What we notice is that the code runs much faster now and as can be seen from the profiler information the memory transfers are taking only small fraction of runtime. GPU kernels represent around 98% of the runtime.
+
+**We have successfully and significantly reduced the total number of memory transfers of the large *T* and *T_new* arrays: from 11,000 transfers to only 2 transfers per run.**
+
+## Key differences
+
+Although we claim that we have significantly reduced the number of data transfers, the *nvprof* report is still indicating that there was around 2250*2 data transfers.
+
+
+Why is the total
 OpenMP
 
 Nesting of target regions, either dynamically or statically, is not allowed.
