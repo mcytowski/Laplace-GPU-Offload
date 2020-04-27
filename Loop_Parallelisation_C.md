@@ -100,6 +100,8 @@ for(i = 1; i <= GRIDX; i++){
 
 Note, that in both cases we were not required to change the structure of the code to achieve GPU parallelisation. Although the Laplace example used in this tutorial gives us a space to explore various OpenACC and OpenMP directives and options, this is still a very simple program. In general cases, GPU parallelisation might require code restructure, regardless of which of the two programming paradigms is used.
 
+**TBD** To put things another way: the kernels construct may be thought of as a hint to the compiler of where it should look for parallelism while the parallel directive is an assertion to the compiler of where there is parallelism.
+
 
 > **KEY TAKEAWAYS**
 > 1. We have explored differences between OpenACC and OpenMP loop constructs for GPU parallelisation.

@@ -95,19 +95,30 @@ What we notice is that the code runs much faster now and as can be seen from the
 
 ## Key differences
 
-Although we claim that we have significantly reduced the number of data transfers, the *nvprof* report is still indicating that there was around 2250*2 data transfers.
+Although we claim that we have significantly reduced the number of data transfers, the *nvprof* report is still indicating that there was around 2250*2 data transfers. Those transfers are related to the use of *dt* in the second loop nest. This scalar variable needs to be copied in and out in every iteration of the algorithm. As mentioned before, there is a small difference on how the *dt* variable is declared in OpenACC and OpenMP versions of the code. In the case of OpenMP we need to be more prescriptive and specify the type of data transfers for the *dt* variable. This is related to differences in how scalar variables are treated in *kernels* and *target* constructs.
 
 
-Why is the total
-OpenMP
+### Default scalar mapping
 
-Nesting of target regions, either dynamically or statically, is not allowed.
-General mapping rules are as follows:
-Pointers are mapped as zero-length array sections with zero base for both explicit and implicit mapping.
-If a zero-length array section that is derived from a pointer variable is mapped, that variable is initialized with the address of the corresponding storage location on the device. If the corresponding storage does not exist, that is, it has not been mapped before, the pointer variable is initialized to NULL.
-The data environment of a target region is defined by the implicit and explicit mapping of variables between the host and device:
-Implicit mapping
-The compiler determines which variables must be mapped to, from, or both to and from the device data environment. Scalar variables that are not explicitly mapped are implicitly mapped as firstprivate if defaultmap(tofrom:scalar) is not specified.
-Explicit mapping
-You can use the map clause on the target region to explicitly list variables to be mapped to, from, or both to and from the device data environment.
-A listed data variable cannot appear in both a data-sharing clause and the map clause on the same target construct.
+> **NOTE** Scalar variables are treated slightly differently in OpenACC and OpenMP GPU regions.
+
+In OpenMP a scalar variable that is not explicitly mapped is implicitly mapped as *firstprivate*, although this behaviour can be changed with the use of *defaultmap(tofrom:scalar)* clause.
+
+In OpenACC a scalar variables that is not explicitly mapped (copied) will be treated:
+* as *firstprivate* in the parallel construct,
+* as if it appeared in *copy* clause in the kernels construct.
+
+This is why in the OpenMP implementation we need to explicitly map the *dt* variable which occurs in the *reduction* clause.
+
+```c
+// compute the largest change and copy T_new to T
+#pragma omp target map(dt)
+#pragma omp teams distribute parallel for collapse(2) reduction(max:dt)
+for(i = 1; i <= GRIDX; i++){
+    for(j = 1; j <= GRIDY; j++){
+      dt = MAX( fabs(T_new[i][j]-T[i][j]), dt);
+      T[i][j] = T_new[i][j];
+    }
+}
+```
+Please be aware that similar data mapping would need to be explicitly provided if we would decide to implement OpenACC version of the code with more prescriptive *parallel* construct instead of *kernels* construct.
