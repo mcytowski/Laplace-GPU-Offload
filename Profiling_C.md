@@ -1,4 +1,4 @@
-v# Step 1: Profiling
+# Step 1: Profiling
 
 > **GOAL** Use basic profiling techniques to identify the most computationally expensive parts of the code.
 
