@@ -1,7 +1,7 @@
 ---
 title: "Loop parallelisation"
-teaching: 30
-exercises: 0
+teaching: 15
+exercises: 15
 questions:
 - "Basic OpenACC and OpenMP directives to parallelise loop nests"
 objectives:

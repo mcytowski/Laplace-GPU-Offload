@@ -1,7 +1,7 @@
 ---
 title: "Data management"
-teaching: 30
-exercises: 0
+teaching: 15
+exercises: 15
 questions:
 - "Usage of OpenACC and OpenMP data mapping directives"
 objectives:

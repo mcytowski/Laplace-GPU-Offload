@@ -1,7 +1,7 @@
 ---
 title: "Profiling"
-teaching: 15
-exercises: 0
+teaching: 5
+exercises: 10
 questions:
 - "Basic profiling to identify the most computationally expensive parts of the code"
 objectives:
