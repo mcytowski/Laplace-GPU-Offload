@@ -1,19 +1,19 @@
 ---
-title: "Step 3: Data management"
-teaching: 20
+title: "Data management"
+teaching: 30
 exercises: 0
 questions:
-- "A quick overview of the Nimbus Interface"
+- "Usage of OpenACC and OpenMP data mapping directives"
 objectives:
-- "Get an overview of the mechanics of using Nimbus"
-- "Learn some key language of cloud computing"
+- "Perform basic profiling of GPU events"
+- "Apply data transfer OpenACC and OpenMP directives to improve the performance of the code"
+- "Understand differences between memory models"
 keypoints:
-- "We use ssh to connect to instances and the nimbus web interface to create and manage instances."
+- "We have successfully and significantly reduced the total number of memory transfers"
+- "We have significantly increased the performance of both GPU implementations"
 ---
 
-# Step 3: Data management
-
-> **GOAL** Apply data transfer OpenACC and OpenMP directives to improve the performance of the code.
+# Data management
 
 Non-optimal memory management (e.g. excessive memory transfers) can heavily impact the performance of any GPU accelerated code. Therefore it is very important to understand how memory is being mapped and copied between host and device.  
 
@@ -41,7 +41,9 @@ main:
 
 As can be seen from the above report arrays **T** and **T_new** are being copied multiple times in and out between host and device. This copying occurs in every iteration of the algorithm.
 
-> **NOTE** We should acknowledge the importance of *-Minfo=accel* compiler feedback option of the PGI compiler for OpenACC. GCC and Clang does not provide similar functionality for OpenMP.
+> ## Note 
+> We should acknowledge the importance of *-Minfo=accel* compiler feedback option of the PGI compiler for OpenACC. GCC and Clang does not provide similar functionality for OpenMP
+{: .callout}
 
 The impact of memory transfers on the current performance of the GPU kernel can be also measured by e.g. *nvprof* profiler by running:
 
@@ -113,7 +115,9 @@ Although we claim that we have significantly reduced the number of data transfer
 
 ### Default scalar mapping
 
-> **NOTE** Scalar variables are treated slightly differently in OpenACC and OpenMP GPU regions.
+> ## Note 
+> Scalar variables are treated slightly differently in OpenACC and OpenMP GPU regions.
+{: .callout}
 
 In OpenMP a scalar variable that is not explicitly mapped is implicitly mapped as *firstprivate*, although this behaviour can be changed with the use of *defaultmap(tofrom:scalar)* clause.
 

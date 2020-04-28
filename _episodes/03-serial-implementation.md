@@ -102,7 +102,6 @@ Next, the largest change in the temperature is computed and ```dt``` is updated.
         printf("Iteration %4.0d, dt %f\n",iteration,dt);
 
     iteration++;
-}
 ```
 ## Time measurements
 
