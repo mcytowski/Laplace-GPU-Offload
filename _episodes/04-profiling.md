@@ -1,5 +1,5 @@
 ---
-title: "Step 1: Profiling"
+title: "Profiling"
 teaching: 15
 exercises: 0
 questions:
@@ -12,7 +12,7 @@ keypoints:
 - "We have identified the most computationally expensive parts of the code - two loop nests executed in each iteration of the solver"
 ---
 
-# Step 1: Profiling
+# Profiling
 
 In this section we will use the GNU Gprof performance analysis tool to profile our Laplace code.
 
