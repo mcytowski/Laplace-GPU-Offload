@@ -26,17 +26,17 @@ The Laplace equation is commonly used in physics to describe various phenomena, 
 
 The 2D Laplace equation is often written as:
 
-<p><img src="img/laplace_eq1.png" alt="Laplace equation" height="40"/></p>
+<p><img src="{{ page.root }}/fig/laplace_eq1.png" alt="Laplace equation" height="40"/></p>
 
 The above equation can be discretised with the Finite Difference Method on a 2D grid. We will assume that each grid cell has side h. The discretisation will lead us to the following formula:
 
-<p><img src="img/laplace_eq2.png" alt="Laplace equation discretisation" height="40"/></p>
+<p><img src="{{ page.root }}/fig/laplace_eq2.png" alt="Laplace equation discretisation" height="40"/></p>
 
 In the above formula u<sub>i,j</sub> represents the value of u function in grid node with (i,j) coordinates.
 
 Note that the above equation can be simplified to:
 
-<p><img src="img/laplace_eq3.png" alt="Laplace equation discretisation" height="20"/></p>
+<p><img src="{{ page.root }}/fig/laplace_eq3.png" alt="Laplace equation discretisation" height="20"/></p>
 
 Since the above formula has to hold for every element in the grid, the computational algorithm of solving Laplace equation is an iterative procedure. The value of u<sub>i,j</sub> in each iteration will be computed from the values of 4 neighbouring grid nodes (u<sub>i-1,j</sub>, u<sub>i+1,j</sub>, u<sub>i,j-1</sub>, u<sub>i,j+1</sub>) computed in previous iteration. This process will be repeated until the solution converges. The example code used in this tutorial is implementing the described iterative process.
 

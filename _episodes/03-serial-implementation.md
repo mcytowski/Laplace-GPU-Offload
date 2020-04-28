@@ -1,5 +1,5 @@
 ---
-title: "Serial Implementation"
+title: "Step 0: Serial Implementation"
 teaching: 20
 exercises: 0
 questions:
