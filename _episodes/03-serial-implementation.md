@@ -1,3 +1,16 @@
+---
+title: "Serial Implementation"
+teaching: 20
+exercises: 0
+questions:
+- "A quick overview of the Nimbus Interface"
+objectives:
+- "Get an overview of the mechanics of using Nimbus"
+- "Learn some key language of cloud computing"
+keypoints:
+- "We use ssh to connect to instances and the nimbus web interface to create and manage instances."
+---
+
 # Serial implementation
 ## Code structure
 ### Data structures

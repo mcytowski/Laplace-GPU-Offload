@@ -1,3 +1,16 @@
+---
+title: "Step 1: Profiling"
+teaching: 20
+exercises: 0
+questions:
+- "A quick overview of the Nimbus Interface"
+objectives:
+- "Get an overview of the mechanics of using Nimbus"
+- "Learn some key language of cloud computing"
+keypoints:
+- "We use ssh to connect to instances and the nimbus web interface to create and manage instances."
+---
+
 # Step 1: Profiling
 
 > **GOAL** Use basic profiling techniques to identify the most computationally expensive parts of the code.
