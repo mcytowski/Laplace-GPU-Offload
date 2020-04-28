@@ -53,6 +53,6 @@ Here we will use a similar approach to the one described in the [Software Engine
 
 ## References
 
-1. https://en.wikipedia.org/wiki/Pierre-Simon_Laplace
-2. https://software-engineering.readthedocs.io/en/latest/laplace_equation.html
-3. https://en.wikipedia.org/wiki/Stencil_code
+1. [https://en.wikipedia.org/wiki/Pierre-Simon_Laplace](https://en.wikipedia.org/wiki/Pierre-Simon_Laplace)
+2. [https://software-engineering.readthedocs.io/en/latest/laplace_equation.html](https://software-engineering.readthedocs.io/en/latest/laplace_equation.html)
+3. [https://en.wikipedia.org/wiki/Stencil_code](https://en.wikipedia.org/wiki/Stencil_code)
