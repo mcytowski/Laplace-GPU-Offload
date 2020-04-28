@@ -1,6 +1,6 @@
 ---
 title: "Serial Implementation"
-teaching: 10
+teaching: 15
 exercises: 0
 questions:
 - "A quick overview of the serial implementation of a 2D Laplace equation solver"
