@@ -29,4 +29,4 @@ objectives:
 
 ### HPC system access and introduction
 
-** Duration**: 20 minutes
+**Duration**: 20 minutes
