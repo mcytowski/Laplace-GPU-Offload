@@ -1,14 +1,14 @@
 ---
 title: "Introduction to Laplace Equation"
-teaching: 20
+teaching: 10
 exercises: 0
 questions:
-- "A quick overview of the Nimbus Interface"
+- "A quick overview of the Laplace equation and solver."
 objectives:
-- "Get an overview of the mechanics of using Nimbus"
-- "Learn some key language of cloud computing"
+- "Understand the origins of the computational problem"
+- "Understand concepts like boundary and initial conditions"
 keypoints:
-- "We use ssh to connect to instances and the nimbus web interface to create and manage instances."
+- "Laplace equation can be solved with the use of iterative algorithm on a discretised computational grid"
 ---
 
 # Introduction to Laplace Equation
