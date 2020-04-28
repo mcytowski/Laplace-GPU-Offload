@@ -1,19 +1,18 @@
 ---
 title: "Step 1: Profiling"
-teaching: 20
+teaching: 15
 exercises: 0
 questions:
-- "A quick overview of the Nimbus Interface"
+- "Basic profiling to identify the most computationally expensive parts of the code"
 objectives:
-- "Get an overview of the mechanics of using Nimbus"
-- "Learn some key language of cloud computing"
+- "Profile the code with the use of GNU gprof tool"
+- "Identify the candidates for GPU optimisation"
 keypoints:
-- "We use ssh to connect to instances and the nimbus web interface to create and manage instances."
+- "We have analysed the performance of the Laplace code with the use of GNU Gprof profiler"
+- "We have identified the most computationally expensive parts of the code - two loop nests executed in each iteration of the solver"
 ---
 
 # Step 1: Profiling
-
-> **GOAL** Use basic profiling techniques to identify the most computationally expensive parts of the code.
 
 In this section we will use the GNU Gprof performance analysis tool to profile our Laplace code.
 
@@ -101,7 +100,3 @@ for(i = 1; i <= GRIDX; i++){
 ```
 
 Those two loop nests are the candidates for directive-based GPU optimisation.
-
-> **KEY TAKEAWAYS**
-> 1. We have analysed the performance of the Laplace code with the use of GNU Gprof profiler.
-> 2. We have identified the most computationally expensive parts of the code - two loop nests executed in each iteration of the solver.

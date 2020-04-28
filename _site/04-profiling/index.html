@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="last-modified" content="2020-04-28 22:31:00 +0800">
+    <meta http-equiv="last-modified" content="2020-04-28 22:46:43 +0800">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- meta "search-domain" used for google site search function google_search() -->
     <meta name="search-domain" value="">
@@ -151,7 +151,7 @@
 
   <div class="row">
     <div class="col-md-3">
-      <strong>Teaching:</strong> 20 min
+      <strong>Teaching:</strong> 15 min
       <br/>
       <strong>Exercises:</strong> 0 min
     </div>
@@ -159,7 +159,7 @@
       <strong>Questions</strong>
       <ul>
 	
-	<li><p>A quick overview of the Nimbus Interface</p>
+	<li><p>Basic profiling to identify the most computationally expensive parts of the code</p>
 </li>
 	
       </ul>
@@ -173,10 +173,10 @@
       <strong>Objectives</strong>
       <ul>
 	
-	<li><p>Get an overview of the mechanics of using Nimbus</p>
+	<li><p>Profile the code with the use of GNU gprof tool</p>
 </li>
 	
-	<li><p>Learn some key language of cloud computing</p>
+	<li><p>Identify the candidates for GPU optimisation</p>
 </li>
 	
       </ul>
@@ -186,10 +186,6 @@
 </blockquote>
 
 <h1 id="step-1-profiling">Step 1: Profiling</h1>
-
-<blockquote>
-  <p><strong>GOAL</strong> Use basic profiling techniques to identify the most computationally expensive parts of the code.</p>
-</blockquote>
 
 <p>In this section we will use the GNU Gprof performance analysis tool to profile our Laplace code.</p>
 
@@ -276,20 +272,15 @@ Each sample counts as 0.01 seconds.
 
 <p>Those two loop nests are the candidates for directive-based GPU optimisation.</p>
 
-<blockquote>
-  <p><strong>KEY TAKEAWAYS</strong></p>
-  <ol>
-    <li>We have analysed the performance of the Laplace code with the use of GNU Gprof profiler.</li>
-    <li>We have identified the most computationally expensive parts of the code - two loop nests executed in each iteration of the solver.</li>
-  </ol>
-</blockquote>
-
 
 <blockquote class="keypoints">
   <h2>Key Points</h2>
   <ul>
     
-    <li><p>We use ssh to connect to instances and the nimbus web interface to create and manage instances.</p>
+    <li><p>We have analysed the performance of the Laplace code with the use of GNU Gprof profiler</p>
+</li>
+    
+    <li><p>We have identified the most computationally expensive parts of the code - two loop nests executed in each iteration of the solver</p>
 </li>
     
   </ul>

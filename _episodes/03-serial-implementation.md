@@ -1,14 +1,14 @@
 ---
 title: "Step 0: Serial Implementation"
-teaching: 20
+teaching: 10
 exercises: 0
 questions:
-- "A quick overview of the Nimbus Interface"
+- "A quick overview of the serial implementation of a 2D Laplace equation solver"
 objectives:
-- "Get an overview of the mechanics of using Nimbus"
-- "Learn some key language of cloud computing"
+- "Understand data structures used in the implementation"
+- "Understand code structure and functions defined in the code"
 keypoints:
-- "We use ssh to connect to instances and the nimbus web interface to create and manage instances."
+- "2D Laplace equation solver is easy to implement. In the implementation we are using basic programming constructs like while and for loops."
 ---
 
 # Serial implementation
